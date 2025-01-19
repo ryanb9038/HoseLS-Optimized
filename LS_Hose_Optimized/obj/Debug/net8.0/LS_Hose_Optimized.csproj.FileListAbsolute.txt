@@ -1,0 +1,14 @@
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\bin\Debug\net8.0\LS_Hose_Optimized.exe
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\bin\Debug\net8.0\LS_Hose_Optimized.deps.json
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\bin\Debug\net8.0\LS_Hose_Optimized.runtimeconfig.json
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\bin\Debug\net8.0\LS_Hose_Optimized.dll
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\bin\Debug\net8.0\LS_Hose_Optimized.pdb
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\LS_Hose_Optimized.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\LS_Hose_Optimized.AssemblyInfoInputs.cache
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\LS_Hose_Optimized.AssemblyInfo.cs
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\LS_Hose_Optimized.csproj.CoreCompileInputs.cache
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\LS_Hose_Optimized.dll
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\refint\LS_Hose_Optimized.dll
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\LS_Hose_Optimized.pdb
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\LS_Hose_Optimized.genruntimeconfig.cache
+c:\Users\Ryan\Downloads\New folder\LS_Hose_Optimized\LS_Hose_Optimized\obj\Debug\net8.0\ref\LS_Hose_Optimized.dll

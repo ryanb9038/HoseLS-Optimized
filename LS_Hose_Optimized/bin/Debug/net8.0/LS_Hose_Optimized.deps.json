@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "LS_Hose_Optimized/1.0.0": {
+        "runtime": {
+          "LS_Hose_Optimized.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LS_Hose_Optimized/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
