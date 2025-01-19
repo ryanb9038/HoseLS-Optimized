@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -51,7 +51,7 @@ namespace HoseScript
 
             EventHandlers["Client:SyncAtOffset"] += new Action<Vector3, Vector3, float, float>(async (coords, offset, heading, pitch) =>
             {
-                UseParticleFxAssetNextCall("core");
+                
                 SetParticleFxShootoutBoat(1);
                 var handle = StartParticleFxLoopedAtCoord("water_cannon_jet", coords.X, coords.Y, coords.Z, pitch, 0f, heading, 0.5f, false, false, false, false);
                 Offset(offset, heading, pitch);
@@ -62,21 +62,24 @@ namespace HoseScript
             // Types: 1 = Add, 2 = Remove, 3 = Update Pitch
             EventHandlers["Client:SyncEntityLoop"] += new Action<int, float, int>((netId, pitch, type) =>
             {
-                if (type == 1)
+                switch (type)
                 {
-                    SyncedParticles.Add(netId, pitch);
-                    ContinueParticles(netId, NetToPed(netId));
-                }
-                else if (type == 2)
-                {
-                    if (SyncedParticles.ContainsKey(netId))
-                    {
+                    case 1:
+                        if (!SyncedParticles.ContainsKey(netId))
+                        {
+                            SyncedParticles[netId] = pitch;
+                            ContinueParticles(netId, NetToPed(netId));
+                        }
+                        break;
+                    case 2:
                         SyncedParticles.Remove(netId);
-                    }
-                }
-                else if (type == 3)
-                {
-                    SyncedParticles[netId] = pitch;
+                        break;
+                    case 3:
+                        if (SyncedParticles.ContainsKey(netId))
+                        {
+                            SyncedParticles[netId] = pitch;
+                        }
+                        break;
                 }
             });
 
@@ -118,19 +121,19 @@ namespace HoseScript
                 {
                     ShowNotification("You do not have ~b~access ~w~to use the hose.");
                 }
-                await Delay(0);
+                
             });
         }
 
 
         private async void ContinueParticles(int netId, int entity)
         {
-            UseParticleFxAssetNextCall("core");
+            
             var handle = StartParticleFxLoopedOnEntity("water_cannon_jet", entity, 0.2f, 0.15f, 0.0f, 0.1f, 0.0f, 0.0f, 0.7f, false, false, false);
             var coords = GetEntityCoords(entity, true);
-            UseParticleFxAssetNextCall("core");
+            
             var handleOffset = StartParticleFxLoopedOnEntity("water_cannon_spray", entity, 0.2f, 9.0f + SyncedParticles[netId] * 0.4f, 0f, 0.1f, 0.0f, 0.0f, 0.9f, false, false, false);      
-            UseParticleFxAssetNextCall("core");
+            
             var handleOffset2 = StartParticleFxLoopedOnEntity("water_cannon_spray", entity, 0.2f, 9.0f + SyncedParticles[netId] * 0.4f, 0f, 0.1f, 0.0f, 0.0f, 0.001f, false, false, false);
             while (SyncedParticles.ContainsKey(netId))
             {
@@ -138,22 +141,22 @@ namespace HoseScript
                 SetParticleFxLoopedOffsets(handle, 0.26f, 0.2f, 0.13f, pitch, 0.0f, 0.0f);
                 SetParticleFxLoopedOffsets(handleOffset, 0.2f, 9.5f + pitch * 0.4f, -0.6f, pitch, 0.0f, 0.8f);
                 SetParticleFxLoopedOffsets(handleOffset2, 0.2f, 5.0f + pitch * 0.4f, pitch - 23.0f, pitch, 0.0f, 0.0f);
-                await Delay(0);
+                
             }
             StopParticleFxLooped(handle, false);
             StopParticleFxLooped(handleOffset, false);
             StopParticleFxLooped(handleOffset2, false);
-            await Delay(0);
+            
         }
 
         private async void Offset(Vector3 offset, float heading, float pitch)
         {
-            UseParticleFxAssetNextCall("core");
+            
             SetParticleFxShootoutBoat(1);
             var handle = StartParticleFxLoopedAtCoord("water_cannon_spray", offset.X, offset.Y, offset.Z, pitch, 0f, heading, 1f, false, false, false, false);
             await Delay(200);
             StopParticleFxLooped(handle, false);
-            await Delay(0);
+            
         }
 
         private void ShowNotification(string text)
@@ -180,11 +183,11 @@ namespace HoseScript
                     float groundZ = 0f;
                     GetGroundZFor_3dCoord(offset.X, offset.Y, offset.Z, ref groundZ, false);
                     DecorSetFloat(ped, "HosePitch", GetGameplayCamRelativePitch());
-                    await Delay(0);
+                    
                 }
                 TriggerServerEvent("Server:SyncEntityLoop", net, GetGameplayCamRelativePitch(), 2);
             }
-            await Delay(0);
+            
         }
 
         private async void ContinueHose(int ped)
@@ -218,15 +221,15 @@ namespace HoseScript
                             {
                                 break;
                             }
-                            await Delay(0);
+                            
                         }
                         TriggerEvent("Client:HoseDeactivated");
                         ButtonPressed = false;
                     }
                 }
-                await Delay(0);
+                
             }
-            await Delay(0);
+            
         }
 
         private async void DisableControls()
@@ -241,9 +244,9 @@ namespace HoseScript
                     DisableControlAction(0, 24, true);
                     DisablePlayerFiring(PlayerId(), true);
                 }
-                await Delay(0);
+                
             }
-            await Delay(0);
+            
         }
 
         public async void RequestParticles()
@@ -251,9 +254,9 @@ namespace HoseScript
             RequestNamedPtfxAsset("core");
             while (!HasNamedPtfxAssetLoaded("core"))
             {
-                await Delay(0);
+                
             }
-            UseParticleFxAssetNextCall("core");
+            
         }
     }
 }
